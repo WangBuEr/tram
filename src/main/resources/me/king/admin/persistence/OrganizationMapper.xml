@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.king.admin.persistence.OrganizationMapper" >
+  <resultMap id="BaseResultMap" type="me.king.admin.domain.Organization" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="BIGINT" />
+    <result column="seq" property="seq" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    id, name, address, code, icon, pid, seq, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from organization
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    delete from organization
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="me.king.admin.domain.Organization" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    insert into organization (id, name, address, 
+      code, icon, pid, seq, 
+      create_time)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{pid,jdbcType=BIGINT}, #{seq,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="me.king.admin.domain.Organization" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    insert into organization
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="seq != null" >
+        seq,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.king.admin.domain.Organization" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    update organization
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      pid = #{pid,jdbcType=BIGINT},
+<!--       <if test="pid != null" > -->
+        
+<!--       </if> -->
+      <if test="seq != null" >
+        seq = #{seq,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.king.admin.domain.Organization" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    update organization
+    set name = #{name,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=BIGINT},
+      seq = #{seq,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+<!-- biz begin -->
+	<select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+	    select 
+	    <include refid="Base_Column_List" />
+	    from organization
+	    order by seq asc,pid asc
+   </select>
+   
+   <update id="updatePidToNullByPid" parameterType="me.king.admin.domain.Organization" >
+    update organization
+    	set pid = null
+    where pid = #{pid,jdbcType=BIGINT}
+  </update>
+<!-- biz end -->
+</mapper>

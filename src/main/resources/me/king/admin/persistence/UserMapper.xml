@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.king.admin.persistence.UserMapper" >
+  <resultMap id="BaseResultMap" type="me.king.admin.domain.User" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="head_image" property="headImage" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="age" property="age" jdbcType="TINYINT" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="organization_id" property="organizationId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <association property="organization" column="organization_id"
+    	select="me.king.admin.persistence.OrganizationMapper.selectByPrimaryKey">
+    </association>
+    <association property="roleList" column="id"
+    	select="me.king.admin.persistence.RoleMapper.selectByUserId">
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    id, login_name, head_image, name, password, sex, age, phone, user_type, status, organization_id, 
+    create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="me.king.admin.domain.User" useGeneratedKeys="true" keyProperty="id">
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    insert into user (id, login_name, head_image, 
+      name, password, sex, 
+      age, phone, user_type, 
+      status, organization_id, create_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{loginName,jdbcType=VARCHAR}, #{headImage,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, 
+      #{age,jdbcType=TINYINT}, #{phone,jdbcType=VARCHAR}, #{userType,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{organizationId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="me.king.admin.domain.User" useGeneratedKeys="true" keyProperty="id">
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="headImage != null" >
+        head_image,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="organizationId != null" >
+        organization_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImage != null" >
+        #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=TINYINT},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.king.admin.domain.User" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    update user
+    <set >
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImage != null" >
+        head_image = #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null and password != ''" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=TINYINT},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="organizationId != null" >
+        organization_id = #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.king.admin.domain.User" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    update user
+    set login_name = #{loginName,jdbcType=VARCHAR},
+      head_image = #{headImage,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      age = #{age,jdbcType=TINYINT},
+      phone = #{phone,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      organization_id = #{organizationId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+<!--   biz begin -->
+  <delete id="deleteByOrgId" parameterType="java.lang.Long" >
+    delete from user
+    where organization_id = #{orgId,jdbcType=BIGINT}
+  </delete>
+  
+  <select id="selectSelective" resultMap="BaseResultMap" parameterType="me.king.admin.domain.User" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    <where>
+    	<include refid="Base_Query_Selective"></include>
+    </where>
+    order by create_time desc
+	limit #{start,jdbcType=INTEGER},#{length,jdbcType=INTEGER}
+  </select>
+  <select id="selectSelectiveCount" resultType="java.lang.Integer" parameterType="me.king.admin.domain.User" >
+    select 
+   	count(*)
+    from user
+    <where>
+    	<include refid="Base_Query_Selective"></include>
+    </where>
+    order by create_time desc
+	limit #{start,jdbcType=INTEGER},#{length,jdbcType=INTEGER}
+  </select>
+  <sql id="Base_Query_Selective">
+ 	 <if test="loginName != null and loginName != ''" >
+       and login_name like concat('%','${loginName}','%' )  
+     </if>
+     <if test="headImage != null" >
+       and head_image = #{headImage,jdbcType=VARCHAR}
+     </if>
+     <if test="name != null and name != ''" >
+       and name like concat('%','${name}','%' )
+     </if>
+     <if test="password != null" >
+       and password = #{password,jdbcType=VARCHAR}
+     </if>
+     <if test="sex != null" >
+       and sex = #{sex,jdbcType=TINYINT}
+     </if>
+     <if test="age != null" >
+       and age = #{age,jdbcType=TINYINT}
+     </if>
+     <if test="phone != null and phone != ''" >
+       and phone like concat('%','${phone}','%' )
+     </if>
+     <if test="userType != null" >
+       and user_type = #{userType,jdbcType=TINYINT}
+     </if>
+     <if test="status != null" >
+       and status = #{status,jdbcType=TINYINT}
+     </if>
+     <if test="organizationId != null" >
+       and organization_id = #{organizationId,jdbcType=INTEGER}
+     </if>
+     <if test="createTime != null" >
+       and create_time = #{createTime,jdbcType=TIMESTAMP}
+     </if>
+  </sql>
+  <select id="selectByLoginName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where login_name = #{loginName,jdbcType=VARCHAR}
+  </select>
+<!--   biz end -->
+</mapper>

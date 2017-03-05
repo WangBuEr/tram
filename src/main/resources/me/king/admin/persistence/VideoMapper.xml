@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.king.admin.persistence.VideoMapper" >
+  <resultMap id="BaseResultMap" type="me.king.admin.domain.Video" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-17 13:54:21。
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="suffix" property="suffix" jdbcType="VARCHAR" />
+    <result column="upload_time" property="uploadTime" jdbcType="TIMESTAMP" />
+    <result column="upload_user" property="uploadUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-17 13:54:21。
+    -->
+    id, customer_id, url, type, suffix, upload_time, upload_user
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-17 13:54:21。
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from video
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-17 13:54:21。
+    -->
+    delete from video
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="me.king.admin.domain.Video" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-17 13:54:21。
+    -->
+    insert into video (id, customer_id, url, 
+      type, suffix, upload_time, 
+      upload_user)
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{suffix,jdbcType=VARCHAR}, #{uploadTime,jdbcType=TIMESTAMP}, 
+      #{uploadUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="me.king.admin.domain.Video" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-17 13:54:21。
+    -->
+    insert into video
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="suffix != null" >
+        suffix,
+      </if>
+      <if test="uploadTime != null" >
+        upload_time,
+      </if>
+      <if test="uploadUser != null" >
+        upload_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="suffix != null" >
+        #{suffix,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null" >
+        #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadUser != null" >
+        #{uploadUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.king.admin.domain.Video" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-17 13:54:21。
+    -->
+    update video
+    <set >
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="suffix != null" >
+        suffix = #{suffix,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null" >
+        upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadUser != null" >
+        upload_user = #{uploadUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.king.admin.domain.Video" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-17 13:54:21。
+    -->
+    update video
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      suffix = #{suffix,jdbcType=VARCHAR},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      upload_user = #{uploadUser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByCustomerId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-17 13:54:21。
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from video
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByCustomerId" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-17 13:54:21。
+    -->
+    delete from video
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </delete>
+</mapper>

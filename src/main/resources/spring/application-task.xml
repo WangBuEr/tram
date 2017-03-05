@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop 
+ 		http://www.springframework.org/schema/aop/spring-aop.xsd 
+ 		http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/task
+		http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+	
+	<!-- task任务扫描注解 -->  
+	<task:annotation-driven/> 
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="closedUnpaidOrderTrigger" />
+			</list>
+		</property>
+		<property name="autoStartup" value="true" />
+	</bean>
+	<bean id="closedUnpaidOrderTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="closedUnpaidOrderJobDetail" />
+		<property name="cronExpression" value="0 0 1 * * ?" />
+		<!-- 		
+		<property name="cronExpression" value="0 */1 * * * ?" /> 
+		-->
+	</bean>
+	<bean id="closedUnpaidOrderJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="orderAutoTaskService" />
+		<property name="targetMethod" value="autoClosedUnpaidOrder" />
+		<property name="concurrent" value="false" />
+	</bean>
+</beans>

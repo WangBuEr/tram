@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.king.admin.persistence.RoleMapper" >
+  <resultMap id="BaseResultMap" type="me.king.admin.domain.Role" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="seq" property="seq" jdbcType="TINYINT" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    id, name, seq, description, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    delete from role
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="me.king.admin.domain.Role" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    insert into role (id, name, seq, 
+      description, status)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{seq,jdbcType=TINYINT}, 
+      #{description,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="me.king.admin.domain.Role" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="seq != null" >
+        seq,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=TINYINT},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.king.admin.domain.Role" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    update role
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        seq = #{seq,jdbcType=TINYINT},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.king.admin.domain.Role" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    update role
+    set name = #{name,jdbcType=VARCHAR},
+      seq = #{seq,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+<!--   biz begin -->
+  <select id="selectSelective" resultMap="BaseResultMap" parameterType="me.king.admin.domain.Role" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    order by seq asc
+	limit #{start,jdbcType=INTEGER},#{length,jdbcType=INTEGER}
+  </select>
+  <select id="selectSelectiveCount" parameterType="me.king.admin.domain.Role" resultType="java.lang.Integer">
+  	select 
+    	count(*)
+    from role
+  </select>
+  <select id="selectByUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  	select 
+    	r.*
+    from role r join user_role ur on r.id = ur.role_id
+    where ur.user_id = #{userId,jdbcType=BIGINT}
+  </select>
+<!--   biz end -->
+</mapper>

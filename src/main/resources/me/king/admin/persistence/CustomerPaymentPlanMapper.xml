@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.king.admin.persistence.CustomerPaymentPlanMapper">
+	<resultMap id="BaseResultMap" type="me.king.admin.domain.CustomerPaymentPlan">
+		<!-- WARNING - @mbggenerated 这是MyBatis Generator自动生成, 不要修改。 生成于 2017-02-07 
+			16:47:39。 -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="customer_id" jdbcType="INTEGER" property="customerId" />
+		<result column="periods" jdbcType="INTEGER" property="periods" />
+		<result column="amount" jdbcType="DOUBLE" property="amount" />
+		<result column="plan_payment_day" jdbcType="TIMESTAMP"
+			property="planPaymentDay" />
+		<result column="actual_payment_day" jdbcType="TIMESTAMP"
+			property="actualPaymentDay" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="payment_type" jdbcType="INTEGER" property="paymentType" />
+		<result column="manual_payment_user" jdbcType="VARCHAR"
+			property="manualPaymentUser" />
+		<result column="whether_overdue" jdbcType="INTEGER" property="whetherOverdue" />
+		<result column="overdue_reason" jdbcType="INTEGER" property="overdueReason" />
+		<association property="manualUser" column="manual_payment_user"
+    		select="me.king.admin.persistence.UserMapper.selectByLoginName">
+    	</association>
+	</resultMap>
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbggenerated 这是MyBatis Generator自动生成, 不要修改。 生成于 2017-02-07 
+			16:47:39。 -->
+		id, customer_id, periods, amount, plan_payment_day,
+		actual_payment_day, status, payment_type,
+		manual_payment_user, whether_overdue, overdue_reason
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		<!-- WARNING - @mbggenerated 这是MyBatis Generator自动生成, 不要修改。 生成于 2017-02-07 
+			16:47:39。 -->
+		select
+		<include refid="Base_Column_List" />
+		from customer_payment_plan
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		<!-- WARNING - @mbggenerated 这是MyBatis Generator自动生成, 不要修改。 生成于 2017-02-07 
+			16:47:39。 -->
+		delete from customer_payment_plan
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="me.king.admin.domain.CustomerPaymentPlan">
+		<!-- WARNING - @mbggenerated 这是MyBatis Generator自动生成, 不要修改。 生成于 2017-02-07 
+			16:47:39。 -->
+		insert into customer_payment_plan (id, customer_id, periods,
+		amount, plan_payment_day, actual_payment_day,
+		status, payment_type, manual_payment_user,
+		whether_overdue, overdue_reason)
+		values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER},
+		#{periods,jdbcType=INTEGER},
+		#{amount,jdbcType=DOUBLE}, #{planPaymentDay,jdbcType=TIMESTAMP},
+		#{actualPaymentDay,jdbcType=TIMESTAMP},
+		#{status,jdbcType=INTEGER}, #{paymentType,jdbcType=INTEGER},
+		#{manualPaymentUser,jdbcType=VARCHAR},
+		#{whetherOverdue,jdbcType=INTEGER}, #{overdueReason,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="me.king.admin.domain.CustomerPaymentPlan">
+		<!-- WARNING - @mbggenerated 这是MyBatis Generator自动生成, 不要修改。 生成于 2017-02-07 
+			16:47:39。 -->
+		insert into customer_payment_plan
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="customerId != null">
+				customer_id,
+			</if>
+			<if test="periods != null">
+				periods,
+			</if>
+			<if test="amount != null">
+				amount,
+			</if>
+			<if test="planPaymentDay != null">
+				plan_payment_day,
+			</if>
+			<if test="actualPaymentDay != null">
+				actual_payment_day,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="paymentType != null">
+				payment_type,
+			</if>
+			<if test="manualPaymentUser != null">
+				manual_payment_user,
+			</if>
+			<if test="whetherOverdue != null">
+				whether_overdue,
+			</if>
+			<if test="overdueReason != null">
+				overdue_reason,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="customerId != null">
+				#{customerId,jdbcType=INTEGER},
+			</if>
+			<if test="periods != null">
+				#{periods,jdbcType=INTEGER},
+			</if>
+			<if test="amount != null">
+				#{amount,jdbcType=DOUBLE},
+			</if>
+			<if test="planPaymentDay != null">
+				#{planPaymentDay,jdbcType=TIMESTAMP},
+			</if>
+			<if test="actualPaymentDay != null">
+				#{actualPaymentDay,jdbcType=TIMESTAMP},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="paymentType != null">
+				#{paymentType,jdbcType=INTEGER},
+			</if>
+			<if test="manualPaymentUser != null">
+				#{manualPaymentUser,jdbcType=VARCHAR},
+			</if>
+			<if test="whetherOverdue != null">
+				#{whetherOverdue,jdbcType=INTEGER},
+			</if>
+			<if test="overdueReason != null">
+				#{overdueReason,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="me.king.admin.domain.CustomerPaymentPlan">
+		<!-- WARNING - @mbggenerated 这是MyBatis Generator自动生成, 不要修改。 生成于 2017-02-07 
+			16:47:39。 -->
+		update customer_payment_plan
+		<set>
+			<if test="customerId != null">
+				customer_id = #{customerId,jdbcType=INTEGER},
+			</if>
+			<if test="periods != null">
+				periods = #{periods,jdbcType=INTEGER},
+			</if>
+			<if test="amount != null">
+				amount = #{amount,jdbcType=DOUBLE},
+			</if>
+			<if test="planPaymentDay != null">
+				plan_payment_day = #{planPaymentDay,jdbcType=TIMESTAMP},
+			</if>
+			<if test="actualPaymentDay != null">
+				actual_payment_day = #{actualPaymentDay,jdbcType=TIMESTAMP},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="paymentType != null">
+				payment_type = #{paymentType,jdbcType=INTEGER},
+			</if>
+			<if test="manualPaymentUser != null">
+				manual_payment_user = #{manualPaymentUser,jdbcType=VARCHAR},
+			</if>
+			<if test="whetherOverdue != null">
+				whether_overdue = #{whetherOverdue,jdbcType=INTEGER},
+			</if>
+			<if test="overdueReason != null">
+				overdue_reason = #{overdueReason,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="me.king.admin.domain.CustomerPaymentPlan">
+		<!-- WARNING - @mbggenerated 这是MyBatis Generator自动生成, 不要修改。 生成于 2017-02-07 
+			16:47:39。 -->
+		update customer_payment_plan
+		set customer_id = #{customerId,jdbcType=INTEGER},
+		periods = #{periods,jdbcType=INTEGER},
+		amount = #{amount,jdbcType=DOUBLE},
+		plan_payment_day = #{planPaymentDay,jdbcType=TIMESTAMP},
+		actual_payment_day = #{actualPaymentDay,jdbcType=TIMESTAMP},
+		status = #{status,jdbcType=INTEGER},
+		payment_type = #{paymentType,jdbcType=INTEGER},
+		manual_payment_user = #{manualPaymentUser,jdbcType=VARCHAR},
+		whether_overdue = #{whetherOverdue,jdbcType=INTEGER},
+		overdue_reason = #{overdueReason,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<!-- biz begin -->
+	<select id="selectByCustomerId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		<!-- WARNING - @mbggenerated 这是MyBatis Generator自动生成, 不要修改。 生成于 2017-02-07 
+			13:43:47。 -->
+		select
+		<include refid="Base_Column_List" />
+		from customer_payment_plan
+		where customer_id =
+		#{customerId,jdbcType=INTEGER}
+	</select>
+	<select id="selectRangePeriod" resultMap="BaseResultMap">
+		<!-- WARNING - @mbggenerated 这是MyBatis Generator自动生成, 不要修改。 生成于 2017-02-07 
+			13:43:47。 -->
+		select
+		<include refid="Base_Column_List" />
+		from customer_payment_plan
+		where 
+			customer_id = #{customerId,jdbcType=INTEGER}
+			and
+			periods <![CDATA[>]]> #{beginPeriods,jdbcType=INTEGER}
+			and
+			periods <![CDATA[<=]]> #{endPeriods,jdbcType=INTEGER}
+	</select>
+	<select id="selectRangePlanDate" resultMap="BaseResultMap">
+		<!-- WARNING - @mbggenerated 这是MyBatis Generator自动生成, 不要修改。 生成于 2017-02-07 
+			13:43:47。 -->
+		select
+		<include refid="Base_Column_List" />
+		from customer_payment_plan
+		<where>
+			<if test="beginPlanPaymentDay != null">
+				and date_format(plan_payment_day,'%Y-%m-%d') <![CDATA[>=]]> date_format(#{beginPlanPaymentDay,jdbcType=VARCHAR}, '%Y-%m-%d')
+			</if>
+			<if test="endPlanPaymentDay != null">
+				and date_format(plan_payment_day,'%Y-%m-%d') <![CDATA[<=]]> date_format(#{endPlanPaymentDay,jdbcType=VARCHAR}, '%Y-%m-%d')
+			</if>
+		</where>
+	</select>
+	<!-- biz end -->
+</mapper>

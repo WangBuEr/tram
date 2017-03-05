@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.king.admin.persistence.CustomerExamineCommentsMapper">
+  <resultMap id="BaseResultMap" type="me.king.admin.domain.CustomerExamineComments">
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-19 16:04:37。
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="examine_comments" jdbcType="VARCHAR" property="examineComments" />
+    <result column="examine_time" jdbcType="TIMESTAMP" property="examineTime" />
+    <result column="agree" jdbcType="INTEGER" property="agree" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-19 16:04:37。
+    -->
+    id, customer_id, examine_comments, examine_time, agree
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-19 16:04:37。
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from customer_examine_comments
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-19 16:04:37。
+    -->
+    delete from customer_examine_comments
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="me.king.admin.domain.CustomerExamineComments">
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-19 16:04:37。
+    -->
+    insert into customer_examine_comments (id, customer_id, examine_comments, 
+      examine_time, agree)
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{examineComments,jdbcType=VARCHAR}, 
+      #{examineTime,jdbcType=TIMESTAMP}, #{agree,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="me.king.admin.domain.CustomerExamineComments">
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-19 16:04:37。
+    -->
+    insert into customer_examine_comments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="examineComments != null">
+        examine_comments,
+      </if>
+      <if test="examineTime != null">
+        examine_time,
+      </if>
+      <if test="agree != null">
+        agree,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="examineComments != null">
+        #{examineComments,jdbcType=VARCHAR},
+      </if>
+      <if test="examineTime != null">
+        #{examineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agree != null">
+        #{agree,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.king.admin.domain.CustomerExamineComments">
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-19 16:04:37。
+    -->
+    update customer_examine_comments
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="examineComments != null">
+        examine_comments = #{examineComments,jdbcType=VARCHAR},
+      </if>
+      <if test="examineTime != null">
+        examine_time = #{examineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agree != null">
+        agree = #{agree,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.king.admin.domain.CustomerExamineComments">
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-19 16:04:37。
+    -->
+    update customer_examine_comments
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      examine_comments = #{examineComments,jdbcType=VARCHAR},
+      examine_time = #{examineTime,jdbcType=TIMESTAMP},
+      agree = #{agree,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+<!--   biz begin -->
+  <select id="selectByCustomerId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-01-19 16:04:37。
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from customer_examine_comments
+    where customer_id = #{customerId,jdbcType=INTEGER}
+    order by examine_time desc
+  </select>
+
+<!-- biz end -->
+</mapper>

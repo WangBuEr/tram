@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.king.admin.persistence.ResourceMapper" >
+  <resultMap id="BaseResultMap" type="me.king.admin.domain.Resource" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="open_mode" property="openMode" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="BIGINT" />
+    <result column="seq" property="seq" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="resource_type" property="resourceType" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    id, name, url, open_mode, description, icon, pid, seq, status, resource_type, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from resource
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    delete from resource
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="me.king.admin.domain.Resource" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    insert into resource (id, name, url, 
+      open_mode, description, icon, 
+      pid, seq, status, resource_type, 
+      create_time)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{openMode,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{pid,jdbcType=BIGINT}, #{seq,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{resourceType,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="me.king.admin.domain.Resource" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    insert into resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="openMode != null" >
+        open_mode,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="seq != null" >
+        seq,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="resourceType != null" >
+        resource_type,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="openMode != null" >
+        #{openMode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="resourceType != null" >
+        #{resourceType,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.king.admin.domain.Resource" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    update resource
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="openMode != null" >
+        open_mode = #{openMode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      pid = #{pid,jdbcType=BIGINT},
+<!--       <if test="pid != null" > -->
+        
+<!--       </if> -->
+      <if test="seq != null" >
+        seq = #{seq,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="resourceType != null" >
+        resource_type = #{resourceType,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.king.admin.domain.Resource" >
+    <!--
+      WARNING - @mbggenerated
+           这是MyBatis Generator自动生成, 不要修改。
+            生成于 2017-02-13 15:57:53。
+    -->
+    update resource
+    set name = #{name,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      open_mode = #{openMode,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=BIGINT},
+      seq = #{seq,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      resource_type = #{resourceType,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+<!--   biz begin -->
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from resource
+    order by seq asc,pid asc
+  </select>
+  <update id="updatePidToNullByPid" parameterType="me.king.admin.domain.Organization" >
+    update resource
+    	set pid = null
+    where pid = #{pid,jdbcType=BIGINT}
+  </update>
+<!--   biz end -->
+</mapper>
